@@ -160,7 +160,7 @@ export default function DiseaseDetection() {
                     Disease Identified
                   </h4>
                   <div className="space-y-2">
-                    <p className="text-xl font-semibold text-red-600">{results.disease}</p>
+                    <p className="text-xl font-semibold text-red-600">{results.class}</p>
                     <p className="text-sm text-gray-600">{results.description}</p>
                     <div className="flex items-center space-x-4">
                       <span className="text-sm text-gray-500">Confidence:</span>
@@ -173,7 +173,7 @@ export default function DiseaseDetection() {
                         results.severity === 'Medium' ? 'bg-yellow-100 text-yellow-600' :
                         'bg-green-100 text-green-600'
                       }`}>
-                        {results.severity}
+                        {results.severity} 
                       </span>
                     </div>
                   </div>
@@ -185,6 +185,9 @@ export default function DiseaseDetection() {
                     Immediate Treatment
                   </h4>
                   <ul className="space-y-2">
+
+                 {results ? <h1 className='text-xl text-[#2cb82c]'>This feature will coming soon</h1> : "This feature will coming soon"}
+
                     {/* {results.treatment.map((step, index) => (
                       <li key={index} className="flex items-start space-x-2">
                         <span className="w-5 h-5 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xs font-bold mt-0.5">
@@ -203,6 +206,8 @@ export default function DiseaseDetection() {
                   Prevention Tips
                 </h4>
                 <div className="grid md:grid-cols-3 gap-3">
+
+                    {results ? <h1 className='text-xl text-[#2cb82c]'>This feature will coming soon</h1> : "This feature will coming soon"}
                   {/* {results.prevention.map((tip, index) => (
                     <div key={index} className="bg-blue-50 rounded-lg p-3 text-sm text-blue-800">
                       {tip}
