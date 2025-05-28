@@ -302,7 +302,7 @@ export default function FarmTechLanding() {
                     <div key={i} className="w-5 h-5 text-yellow-400">⭐</div>
                   ))}
                 </div>
-                <p className="text-gray-700 mb-6 text-lg italic">"{testimonial.text}"</p>
+                <p className="text-gray-700 mb-6 text-lg italic">{testimonial.text}</p>
                 <div>
                   <p className="font-bold text-gray-800">{testimonial.name}</p>
                   <p className="text-green-600">{testimonial.location}</p>
