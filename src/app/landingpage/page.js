@@ -35,7 +35,7 @@ export default function FarmTechLanding() {
       title: "Tree Counting",
       description: "Automatically count trees in your garden or orchard from aerial photos",
       benefit: "Accurate inventory for better farm management",
-      redirection: '/crown_detection'
+      redirection: '/crown_count'
     },
     {
       icon: <Trash2 className="w-12 h-12 text-green-600" />,
