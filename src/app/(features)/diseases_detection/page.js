@@ -35,7 +35,7 @@ export default function DiseaseDetection() {
     formData.append("image", imageFile);
 
     try {
-      const response = await axios.post("https://agroai-model.onrender.com/detect-disease", formData, {
+      const response = await axios.post("https://agroai-model.onrender.com/predict-disease", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
