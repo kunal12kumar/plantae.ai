@@ -17,6 +17,7 @@ import {
   Info,
   Zap
 } from 'lucide-react';
+import Image from 'next/image';
 
 // Disease Detection Component
 export default function DiseaseDetection(){
@@ -108,7 +109,7 @@ export default function DiseaseDetection(){
       ) : (
         <div className="space-y-6">
           <div className="relative">
-            <img
+            <Image
               src={uploadedImage}
               alt="Uploaded crop"
               className="w-full h-64 object-cover rounded-2xl shadow-lg"

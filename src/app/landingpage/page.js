@@ -4,11 +4,15 @@
 
 import React, { useState, useEffect } from 'react';
 import { Camera, TreePine, Trash2, Upload, CheckCircle, Users, Shield, Clock, ChevronDown, Menu, X, Play } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function FarmTechLanding() {
 //   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentFeature, setCurrentFeature] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+
+  
+  const router =useRouter()
 
   useEffect(() => {
     setIsVisible(true);
@@ -23,19 +27,22 @@ export default function FarmTechLanding() {
       icon: <Camera className="w-12 h-12 text-green-600" />,
       title: "Disease Detection",
       description: "Upload crop photos to instantly identify diseases and get treatment recommendations",
-      benefit: "Save up to 80% of crops from disease damage"
+      benefit: "Save up to 80% of crops from disease damage",
+      redirection: '/diseases_detection'
     },
     {
       icon: <TreePine className="w-12 h-12 text-green-600" />,
       title: "Tree Counting",
       description: "Automatically count trees in your garden or orchard from aerial photos",
-      benefit: "Accurate inventory for better farm management"
+      benefit: "Accurate inventory for better farm management",
+      redirection: '/crown_detection'
     },
     {
       icon: <Trash2 className="w-12 h-12 text-green-600" />,
       title: "Weed Detection",
       description: "Identify weeds in your fields and get targeted removal strategies",
-      benefit: "Reduce herbicide use by 60% with precise targeting"
+      benefit: "Reduce herbicide use by 60% with precise targeting",
+      redirection: "/weed_detection"
     }
   ];
 
@@ -199,7 +206,7 @@ export default function FarmTechLanding() {
                     <CheckCircle className="w-6 h-6 text-green-600" />
                     <span className="text-lg font-semibold text-green-600">{feature.benefit}</span>
                   </div>
-                  <button className="px-6 py-3 bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-lg hover:from-green-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105">
+                  <button onClick={()=> router.push(feature.redirection)} className="px-6 py-3 bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-lg hover:from-green-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105">
                     Try {feature.title}
                   </button>
                 </div>
@@ -320,9 +327,6 @@ export default function FarmTechLanding() {
           </button>
         </div>
       </section>
-
-  
-     
     </div>
   );
 }

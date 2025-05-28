@@ -2,6 +2,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { Camera, TreePine, Trash2, Upload, CheckCircle, Users, Shield, Clock, ChevronDown, Menu, X, Play } from 'lucide-react';
+import Link from 'next/link';
 
 
 export default function Header() {
@@ -19,9 +20,9 @@ export default function Header() {
                             <div className="w-10 h-10 bg-gradient-to-r from-green-600 to-blue-600 rounded-lg flex items-center justify-center">
                                 <Camera className="w-6 h-6 text-white" />
                             </div>
-                            <span className="text-2xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+                           <Link href={'/'}> <span className="text-2xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
                                 Plantae.AI
-                            </span>
+                            </span> </Link>
                         </div>
 
                         <div className="hidden md:flex space-x-8">
