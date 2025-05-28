@@ -1,24 +1,24 @@
-// for treee counting
-"use client"
-import React, { useState, useRef } from 'react';
-import { 
-  Camera, 
-  Upload, 
-  X, 
-  CheckCircle, 
-  AlertTriangle, 
-  TreePine, 
-  Trash2, 
-  BarChart3, 
-  Target, 
+// TreeCounting.jsx
+"use client";
+import React, { useState, useRef } from "react";
+import {
+  Camera,
+  Upload,
+  X,
+  CheckCircle,
+  AlertTriangle,
+  TreePine,
+  Trash2,
+  BarChart3,
+  Target,
   Clock,
   Download,
   Share2,
   RefreshCw,
   Info,
-  Zap
-} from 'lucide-react';
-import Image from 'next/image';
+  Zap,
+} from "lucide-react";
+import Image from "next/image";
 
 // Tree Counting Component
 const TreeCounting = () => {
@@ -49,18 +49,18 @@ const TreeCounting = () => {
         treeTypes: [
           { type: "Mango", count: 25, health: "Good" },
           { type: "Coconut", count: 15, health: "Excellent" },
-          { type: "Neem", count: 7, health: "Fair" }
+          { type: "Neem", count: 7, health: "Fair" },
         ],
         areaAnalysis: {
           totalArea: "2.3 acres",
           treeDensity: "20 trees/acre",
-          coverage: "85%"
+          coverage: "85%",
         },
         recommendations: [
-          "Consider planting 8-10 more trees for optimal density",
+          "Consider planting 8–10 more trees for optimal density",
           "Check stressed trees for disease or water issues",
-          "Maintain 15-20 feet spacing between mature trees"
-        ]
+          "Maintain 15–20 feet spacing between mature trees",
+        ],
       });
       setIsAnalyzing(false);
     }, 3000);
@@ -73,7 +73,7 @@ const TreeCounting = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white rounded-3xl shadow-2xl">
+    <div className="max-w-full min-h-screen mx-auto p-6 bg-white rounded-3xl shadow-2xl">
       <div className="text-center mb-8">
         <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl mb-4">
           <TreePine className="w-8 h-8 text-white" />
@@ -115,6 +115,8 @@ const TreeCounting = () => {
               src={uploadedImage}
               alt="Uploaded garden"
               className="w-full h-64 object-cover rounded-2xl shadow-lg"
+              width={1000}
+              height={400}
             />
             <button
               onClick={resetAnalysis}
@@ -188,11 +190,15 @@ const TreeCounting = () => {
                           <span className="font-medium text-gray-800">{tree.type}</span>
                           <span className="text-sm text-gray-500 ml-2">({tree.count} trees)</span>
                         </div>
-                        <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                          tree.health === 'Excellent' ? 'bg-green-100 text-green-600' :
-                          tree.health === 'Good' ? 'bg-blue-100 text-blue-600' :
-                          'bg-yellow-100 text-yellow-600'
-                        }`}>
+                        <span
+                          className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                            tree.health === "Excellent"
+                              ? "bg-green-100 text-green-600"
+                              : tree.health === "Good"
+                              ? "bg-blue-100 text-blue-600"
+                              : "bg-yellow-100 text-yellow-600"
+                          }`}
+                        >
                           {tree.health}
                         </span>
                       </div>
@@ -213,7 +219,9 @@ const TreeCounting = () => {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Coverage:</span>
-                      <span className="font-semibold text-green-600">{results.areaAnalysis.coverage}</span>
+                      <span className="font-semibold text-green-600">
+                        {results.areaAnalysis.coverage}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -237,3 +245,5 @@ const TreeCounting = () => {
     </div>
   );
 };
+
+export default TreeCounting;
