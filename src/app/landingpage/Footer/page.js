@@ -5,7 +5,7 @@ import { FaLeaf, FaMicroscope, FaTree, FaBug, FaFacebook, FaTwitter, FaLinkedin 
 
 const Footer = () => {
   return (
-    <footer className="bg-green-900 text-white px-6 py-10 mt-10">
+    <footer className="bg-green-900 text-white px-6 py-10 ">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Brand and Overview */}
         <div>

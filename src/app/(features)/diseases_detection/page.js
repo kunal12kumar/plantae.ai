@@ -1,27 +1,14 @@
 "use client"
 import React, { useState, useRef } from 'react';
+import axios from 'axios';
 import { 
-  Camera, 
-  Upload, 
-  X, 
-  CheckCircle, 
-  AlertTriangle, 
-  TreePine, 
-  Trash2, 
-  BarChart3, 
-  Target, 
-  Clock,
-  Download,
-  Share2,
-  RefreshCw,
-  Info,
-  Zap
+  Camera, Upload, X, CheckCircle, AlertTriangle, Download, Share2, RefreshCw, Info, Zap 
 } from 'lucide-react';
 import Image from 'next/image';
 
-// Disease Detection Component
-export default function DiseaseDetection(){
+export default function DiseaseDetection() {
   const [uploadedImage, setUploadedImage] = useState(null);
+  const [imageFile, setImageFile] = useState(null); // Store actual file for sending to backend
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [results, setResults] = useState(null);
   const fileInputRef = useRef(null);
@@ -29,6 +16,7 @@ export default function DiseaseDetection(){
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
+      setImageFile(file);
       const reader = new FileReader();
       reader.onload = (e) => {
         setUploadedImage(e.target.result);
@@ -38,42 +26,45 @@ export default function DiseaseDetection(){
     }
   };
 
-  const analyzeImage = () => {
+  const analyzeImage = async () => {
+    if (!imageFile) return;
+
     setIsAnalyzing(true);
-    // Simulate API call
-    setTimeout(() => {
-      setResults({
-        disease: "Late Blight",
-        confidence: 94,
-        severity: "Medium",
-        description: "A fungal disease that affects potato and tomato plants, causing dark spots on leaves.",
-        treatment: [
-          "Apply copper-based fungicide immediately",
-          "Remove infected leaves and burn them",
-          "Improve air circulation around plants",
-          "Avoid overhead watering"
-        ],
-        prevention: [
-          "Plant resistant varieties",
-          "Ensure proper spacing between plants",
-          "Apply preventive fungicide sprays"
-        ],
-        urgency: "high"
+
+    const formData = new FormData();
+    formData.append("image", imageFile);
+
+    try {
+      const response = await axios.post("https://agroai-model.onrender.com/detect-disease", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
+
+      console.log(response)
+      console.log(response.data)
+      alert(response)
+
+      setResults(response.data); // Assuming response contains the result object
+    } catch (error) {
+      console.error("Error during disease detection:", error);
+      alert("Failed to analyze image. Please try again.");
+    } finally {
       setIsAnalyzing(false);
-    }, 3000);
+    }
   };
 
   const resetAnalysis = () => {
     setUploadedImage(null);
+    setImageFile(null);
     setResults(null);
     setIsAnalyzing(false);
   };
 
   return (
-    <div className="max-w-full mx-auto p-6 bg-white min-h-screen rounded-3xl shadow-2xl">
+    <div className="max-w-full mx-auto p-6 pt-30 bg-white min-h-screen rounded-3xl shadow-2xl">
       <div className="text-center mb-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-red-500 to-orange-500 rounded-2xl mb-4">
+        <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500  rounded-2xl mb-4">
           <Camera className="w-8 h-8 text-white" />
         </div>
         <h2 className="text-3xl font-bold text-gray-800 mb-2">Disease Detection</h2>
@@ -99,7 +90,7 @@ export default function DiseaseDetection(){
             </div>
             <button
               onClick={() => fileInputRef.current?.click()}
-              className="px-8 py-3 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-xl hover:from-red-600 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 font-semibold"
+              className="px-8 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-xl   hover:from-[#59c059] hover:to-[#6eaf62] transition-all duration-300 transform hover:scale-105 font-semibold"
             >
               Choose Image
             </button>
@@ -113,6 +104,8 @@ export default function DiseaseDetection(){
               src={uploadedImage}
               alt="Uploaded crop"
               className="w-full h-64 object-cover rounded-2xl shadow-lg"
+              width={600}
+              height={300}
             />
             <button
               onClick={resetAnalysis}
@@ -126,7 +119,7 @@ export default function DiseaseDetection(){
             <div className="text-center">
               <button
                 onClick={analyzeImage}
-                className="px-8 py-4 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-xl hover:from-red-600 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 font-semibold text-lg flex items-center space-x-2 mx-auto"
+                className="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-xl hover:from-green-500 hover:to-emerald-500 transition-all duration-300 transform hover:scale-105 font-semibold text-lg flex items-center space-x-2 mx-auto"
               >
                 <Zap className="w-5 h-5" />
                 <span>Analyze Disease</span>
@@ -221,4 +214,4 @@ export default function DiseaseDetection(){
       )}
     </div>
   );
-};
+}

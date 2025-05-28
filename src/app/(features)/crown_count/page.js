@@ -73,7 +73,7 @@ const TreeCounting = () => {
   };
 
   return (
-    <div className="max-w-full min-h-screen mx-auto p-6 bg-white rounded-3xl shadow-2xl">
+    <div className="max-w-full min-h-screen mx-auto py-10 p-6 bg-white rounded-3xl shadow-2xl">
       <div className="text-center mb-8">
         <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl mb-4">
           <TreePine className="w-8 h-8 text-white" />
