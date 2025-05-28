@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 import { Camera, TreePine, Trash2, Upload, CheckCircle, Users, Shield, Clock, ChevronDown, Menu, X, Play } from 'lucide-react';
 
 export default function FarmTechLanding() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+//   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentFeature, setCurrentFeature] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -70,7 +70,7 @@ export default function FarmTechLanding() {
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-lg z-50 transition-all duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-2">
               <div className="w-10 h-10 bg-gradient-to-r from-green-600 to-blue-600 rounded-lg flex items-center justify-center">
@@ -100,10 +100,10 @@ export default function FarmTechLanding() {
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
-        </div>
+        </div> */}
 
         {/* Mobile Menu */}
-        {isMenuOpen && (
+        {/* {isMenuOpen && (
           <div className="md:hidden bg-white border-t">
             <div className="px-4 py-2 space-y-2">
               <a href="#features" className="block py-2 text-gray-700 hover:text-green-600">Features</a>
@@ -114,7 +114,7 @@ export default function FarmTechLanding() {
               </button>
             </div>
           </div>
-        )}
+        )} */}
       </nav>
 
       {/* Hero Section */}
@@ -252,7 +252,7 @@ export default function FarmTechLanding() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-              Why Choose FarmTech AI?
+              Why Choose Plantae.AI?
             </h2>
           </div>
 
@@ -321,25 +321,8 @@ export default function FarmTechLanding() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-r from-green-600 to-blue-600 rounded-lg flex items-center justify-center">
-                <Camera className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-2xl font-bold">FarmTech AI</span>
-            </div>
-            <p className="text-gray-400 mb-8">
-              Empowering farmers with AI technology for better harvests
-            </p>
-            <p className="text-gray-500">
-              © 2025 FarmTech AI. Made with ❤️ for Indian farmers.
-            </p>
-          </div>
-        </div>
-      </footer>
+  
+     
     </div>
   );
 }
