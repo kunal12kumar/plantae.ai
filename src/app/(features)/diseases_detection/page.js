@@ -5,6 +5,7 @@ import {
   Camera, Upload, X, CheckCircle, AlertTriangle, Download, Share2, RefreshCw, Info, Zap 
 } from 'lucide-react';
 import Image from 'next/image';
+import { toast, ToastContainer } from 'react-toastify';
 
 export default function DiseaseDetection() {
   const [uploadedImage, setUploadedImage] = useState(null);
@@ -32,7 +33,7 @@ export default function DiseaseDetection() {
     setIsAnalyzing(true);
 
     const formData = new FormData();
-    formData.append("image", imageFile);
+    formData.append("file", imageFile);
 
     try {
       const response = await axios.post("https://agroai-model.onrender.com/predict-disease", formData, {
@@ -43,7 +44,7 @@ export default function DiseaseDetection() {
 
       console.log(response)
       console.log(response.data)
-      alert(response)
+      toast.success(response.data)
 
       setResults(response.data); // Assuming response contains the result object
     } catch (error) {
@@ -63,6 +64,7 @@ export default function DiseaseDetection() {
 
   return (
     <div className="max-w-full mx-auto p-6 pt-30 bg-white min-h-screen rounded-3xl shadow-2xl">
+      <ToastContainer></ToastContainer>
       <div className="text-center mb-8">
         <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500  rounded-2xl mb-4">
           <Camera className="w-8 h-8 text-white" />
@@ -183,14 +185,14 @@ export default function DiseaseDetection() {
                     Immediate Treatment
                   </h4>
                   <ul className="space-y-2">
-                    {results.treatment.map((step, index) => (
+                    {/* {results.treatment.map((step, index) => (
                       <li key={index} className="flex items-start space-x-2">
                         <span className="w-5 h-5 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xs font-bold mt-0.5">
                           {index + 1}
                         </span>
                         <span className="text-sm text-gray-700">{step}</span>
                       </li>
-                    ))}
+                    ))} */}
                   </ul>
                 </div>
               </div>
@@ -201,11 +203,11 @@ export default function DiseaseDetection() {
                   Prevention Tips
                 </h4>
                 <div className="grid md:grid-cols-3 gap-3">
-                  {results.prevention.map((tip, index) => (
+                  {/* {results.prevention.map((tip, index) => (
                     <div key={index} className="bg-blue-50 rounded-lg p-3 text-sm text-blue-800">
                       {tip}
                     </div>
-                  ))}
+                  ))} */}
                 </div>
               </div>
             </div>
