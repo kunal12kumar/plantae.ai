@@ -42,7 +42,7 @@ export default function FarmTechLanding() {
       title: "Weed Detection",
       description: "Identify weeds in your fields and get targeted removal strategies",
       benefit: "Reduce herbicide use by 60% with precise targeting",
-      redirection: "/weed_detection"
+      redirection: "/weeds_detection"
     }
   ];
 
@@ -192,7 +192,7 @@ export default function FarmTechLanding() {
             {features.map((feature, index) => (
               <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12`}>
                 <div className="flex-1">
-                  <div className="bg-gradient-to-br from-green-400 to-blue-500 rounded-3xl p-12 flex items-center justify-center">
+                  <div className="bg-gradient-to-br from-green-400 to-blue-500 rounded-3xl p-20 flex items-center justify-center">
                     <div className="text-white transform scale-150">
                       {feature.icon}
                     </div>

@@ -65,9 +65,9 @@ const WeedDetection = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white rounded-3xl shadow-2xl">
+    <div className="max-w-full  mx-auto p-6 bg-white pt-30 shadow-2xl">
       <div className="text-center mb-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl mb-4">
+        <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl mb-4">
           <Trash2 className="w-8 h-8 text-white" />
         </div>
         <h2 className="text-3xl font-bold text-gray-800 mb-2">Weed Detection</h2>
@@ -93,7 +93,7 @@ const WeedDetection = () => {
             </div>
             <button
               onClick={() => fileInputRef.current?.click()}
-              className="px-8 py-3 bg-gradient-to-r from-yellow-500 to-orange-500 text-white rounded-xl hover:from-yellow-600 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 font-semibold"
+              className="px-8 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-xl hover:from-green-600 hover:to-emerald-600 transition-all duration-300 transform hover:scale-105 font-semibold"
             >
               Choose Image
             </button>
