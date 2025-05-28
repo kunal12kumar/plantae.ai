@@ -4,6 +4,7 @@
 
 import React, { useState, useRef } from "react";
 import { Trash2, Upload, X, Target, RefreshCw, Clock } from "lucide-react";
+import Image from "next/image";
 
 const WeedDetection = () => {
   const [uploadedImage, setUploadedImage] = useState(null);
@@ -102,7 +103,7 @@ const WeedDetection = () => {
       ) : (
         <div className="space-y-6">
           <div className="relative">
-            <img
+            <Image
               src={uploadedImage}
               alt="Uploaded field"
               className="w-full h-64 object-cover rounded-2xl shadow-lg"

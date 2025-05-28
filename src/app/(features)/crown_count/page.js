@@ -18,6 +18,7 @@ import {
   Info,
   Zap
 } from 'lucide-react';
+import Image from 'next/image';
 
 // Tree Counting Component
 const TreeCounting = () => {
@@ -110,7 +111,7 @@ const TreeCounting = () => {
       ) : (
         <div className="space-y-6">
           <div className="relative">
-            <img
+            <Image
               src={uploadedImage}
               alt="Uploaded garden"
               className="w-full h-64 object-cover rounded-2xl shadow-lg"
